@@ -1,0 +1,48 @@
+//обработчик событий и нажатий клавиш
+void input_v1(RenderWindow &window, Kevin &activeActor) {
+
+	Event event;
+
+	
+	while (window.pollEvent(event)) {
+
+		if (event.type == Event::Closed)
+			window.close();
+	
+		if (Keyboard::isKeyPressed(Keyboard::A))
+			activeActor.moveLeft();
+
+		if (event.type == Event::KeyReleased)
+			if (event.key.code == Keyboard::A)
+				activeActor.stopLeft();
+
+		if (Keyboard::isKeyPressed(Keyboard::D))
+			activeActor.moveRight();
+
+		if (event.type == Event::KeyReleased)
+			if (event.key.code == Keyboard::D)
+				activeActor.stopRight();
+
+		if (Keyboard::isKeyPressed(Keyboard::S))
+			activeActor.moveDown();
+
+		if (event.type == Event::KeyReleased)
+			if (event.key.code == Keyboard::S)
+				activeActor.stopDown();
+
+		if (Keyboard::isKeyPressed(Keyboard::W))
+			activeActor.moveUp();
+
+		if (event.type == Event::KeyReleased)
+			if (event.key.code == Keyboard::W)
+				activeActor.stopUp();
+
+		if (Keyboard::isKeyPressed(Keyboard::LShift))
+			activeActor.setFastSpeed();
+
+		if (event.type == Event::KeyReleased)
+			if (event.key.code == Keyboard::LShift)
+				activeActor.setBaseSpeed();
+	}
+
+}
